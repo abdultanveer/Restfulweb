@@ -27,6 +27,11 @@ public class StudentService {
         return students;
     }
 
+    /**
+     * query for the student in the db with
+     * @param id given id
+     * @return
+     */
     public Student findStudent(int id) {
         Student student=  students.stream()   //convert the students list to a stream
                 .filter(s -> s.getId() == id )
@@ -34,5 +39,14 @@ public class StudentService {
                 .get();
 
         return student;
+    }
+
+    /**
+     * add  a new student[row] in  the db
+     * @param student
+     */
+    public void addStudent(Student student) {
+        students.add(student);
+        System.out.println("added a student");
     }
 }
