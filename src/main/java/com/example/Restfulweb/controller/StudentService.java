@@ -1,7 +1,9 @@
 package com.example.Restfulweb.controller;
 
 
+import com.example.Restfulweb.StudentRepository;
 import com.example.Restfulweb.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +15,9 @@ import java.util.List;
 
 @Service
 public class StudentService {
+    @Autowired
+    StudentRepository studentRepository;
+
     List<Student> students = new ArrayList<>();
 
     public void createStudents() {
@@ -24,7 +29,8 @@ public class StudentService {
     }
     public List<Student> getStudents() {
         createStudents();
-        return students;
+        return studentRepository.findAll();
+       // return students;
     }
 
     /**
@@ -46,7 +52,8 @@ public class StudentService {
      * @param student
      */
     public void addStudent(Student student) {
-        students.add(student);
+        //students.add(student);
+        studentRepository.save(student);
         System.out.println("added a student");
     }
 }

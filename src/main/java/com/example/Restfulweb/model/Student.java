@@ -1,15 +1,29 @@
 package com.example.Restfulweb.model;
 
+
+import jakarta.persistence.*;
+
 /**
  * This is  a pojo class
  * representing a student
  */
+
+@Entity
+@Table(name = "students")
 public class Student {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
+	@Column
 	String name;
+	@Column
 	int sem;
+	@Column
 	int avg;
+
+	public Student() {}
+
 	public Student(int id, String name, int sem, int avg) {
 		super();
 		this.id = id;
