@@ -1,6 +1,7 @@
 package com.example.Restfulweb.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,8 +18,9 @@ public class EmployeeController {
         return "the sum is";
     }
 
-    @GetMapping("/weather")
-    String getWeather(){
-        return  "the  weather is good";
+    //http://localhost:8080/weather/bangalore
+    @GetMapping(path = "/weather/{cityName}")
+    String getWeather(@PathVariable String cityName){
+        return  cityName +"  weather is good";
     }
 }
